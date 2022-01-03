@@ -94,6 +94,7 @@ def get_dataframe(station=''):
        ]
     return df[usecols]
 df = get_dataframe(station)
+df = df.set_index('tt')
 st.dataframe(df.style.highlight_null(), width=1080, height=1920)
 
 # st.dataframe(df.style.highlight_max(axis=0))
