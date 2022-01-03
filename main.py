@@ -11,6 +11,8 @@ from functools import reduce
 from io import StringIO
 from pathlib import Path
 from typing import Optional, Union
+import pytz
+
 
 import numpy as np
 import pandas as pd
@@ -37,7 +39,8 @@ def get_dataframe(station=''):
         })
 
 
-    end_date = datetime.datetime.now()
+    eastern = pytz.timezone('Asia/Tokyo')
+    end_date = datetime.datetime.now(tz=eastern)
     # start_date =  end_date - datetime.timedelta(days=1)
     start_date =  end_date - pd.Timedelta(hours=1)
     startDate = start_date.strftime('%Y%m%d%H%M')
